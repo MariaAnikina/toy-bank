@@ -2,12 +2,12 @@ public class Request {
 
 	private String client;
 	private double sum;
-	private boolean isAddition;
+	private Procedure procedure;
 
-	public Request(String client, double sum, boolean isAddition) {
+	public Request(String client, double sum, Procedure procedure) {
 		this.client = client;
 		this.sum = sum;
-		this.isAddition = isAddition;
+		this.procedure = procedure;
 	}
 
 	public String getClient() {
@@ -26,18 +26,20 @@ public class Request {
 		this.sum = sum;
 	}
 
-	public boolean isAddition() {
-		return isAddition;
+	public Procedure getProcedure() {
+		return procedure;
 	}
 
-	public void setAddition(boolean addition) {
-		isAddition = addition;
+	public void setProcedure(Procedure procedure) {
+		this.procedure = procedure;
 	}
 
-	//	Client client1 = new Client(1, "Oleg");
-//	Client client2 = new Client(2, "Anna");
-//	Client client3 = new Client(3, "Maria");
-//	Client client4 = new Client(4, "Barsik");
-
-
+	@Override
+	public String toString() {
+		return "Request{" +
+				"client='" + client + '\'' +
+				", sum=" + sum +
+				", procedure=" + procedure +
+				'}';
+	}
 }

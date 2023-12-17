@@ -1,17 +1,17 @@
 public class Client implements Runnable {
-
-
-	private Request request;
 	private String name;
+	private Request request;
+	private FrontalService frontalService;
 
-	public Client(Request request, String name) {
-		this.request = request;
+	public Client(String name, FrontalService frontalService) {
 		this.name = name;
+		this.frontalService = frontalService;
 	}
 
 	@Override
 	public void run() {
-		System.out.println("Поток запущен");
+		frontalService.addRequest(request);
+		System.out.println(name + ": " + request.toString() + " отправлена в банк");
 	}
 
 	public String getName() {
@@ -22,27 +22,11 @@ public class Client implements Runnable {
 		this.name = name;
 	}
 
-//	public static void main(String[] args) {
-//		Thread myThread1 = new MyThread();
-//
-//		myThread1.start();
-//
-//
-//		Thread threadRunnable2 = new Thread(new MyThreadRunnable());
-//
-//		threadRunnable2.start();
-//
-//
-//		Thread threadRunnable3 = new Thread(() -> System.out.println("создание потока с помощью лямбды"));
-//
-//		threadRunnable3.start();
-//
-//		try {
-//			Thread.sleep(1000);
-//		} catch (InterruptedException e) {
-//			throw new RuntimeException(e);
-//		}
-//
-//
-//	}
+	public Request getRequest() {
+		return request;
+	}
+
+	public void setRequest(Request request) {
+		this.request = request;
+	}
 }
